@@ -11,7 +11,7 @@ class ReposTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue(is_a($return, 'stdClass'));
 	}
 	
-	public function testGetsFollowers() {
+	public function testGetsShow() {
 		$return = GitHub\Repos::show('jetviper21', 'plow');
 		$this->assertTrue(is_a($return, 'stdClass'));
 	}

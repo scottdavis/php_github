@@ -10,18 +10,21 @@ class Loader {
 	static $token = '';
 	static $login = '';
 	
-	public static function send($url, $type='GET', $auth = false) {
+	public static function send($url, $type='GET', $auth = false, $post_options = array()) {
 		//init curl 
 		$curl = curl_init(self::PREFIX . $url);
 		//set headers
-		if($type=='post') {
+		if(strtolower($type)=='post') {
 			curl_setopt ($curl, CURLOPT_POST, 1);
 		}
 		
 		if($auth) {
-			$args['login'] = static::$login;
-			$args['token'] = static::$token;
-			 curl_setopt($curl, CURLOPT_POSTFIELDS, $args);
+			$post_options['login'] = static::$login;
+			$post_options['token'] = static::$token;
+		}
+		
+		if(!empty($post_options)) {
+			curl_setopt($curl, CURLOPT_POSTFIELDS, $post_options);
 		}
 		
     curl_setopt($curl, CURLOPT_VERBOSE, 0);

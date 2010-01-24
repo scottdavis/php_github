@@ -16,7 +16,7 @@ class Issues {
 	const SEARCH = '/issues/search/:user/:repo/:state/:search_term';
 	const PROJECT = '/issues/list/:user/:repo/:state';
 	const VIEW = '/issues/show/:user/:repo/:number';
-	const OPEN = '/issues/open/:user/:repo';
+	const OPEN_issue = '/issues/open/:user/:repo';
 	const CLOSE = '/issues/close/:user/:repo/:number';
 	const REOPEN = '/issues/reopen/:user/:repo/:number';
 	const EDIT = '/issues/edit/:user/:repo/:number';
@@ -42,7 +42,7 @@ class Issues {
 		* @param string $repo - repository name
 		* @param string $state - open | closed
 		*/
-	public function issues($user, $repo, $state) {
+	public static function get($user, $repo, $state) {
 		$url = Loader::prep_url(self::PROJECT, compact('user', 'repo', 'state'));
 		return Loader::get_obj($url);
 	}
@@ -52,19 +52,11 @@ class Issues {
 		* @param string $repo - repository name
 		* @param string $number - issue number
 		*/
-	public function view($user, $repo, $number) {
+	public static function view($user, $repo, $number) {
 		$url = Loader::prep_url(self::VIEW, compact('user', 'repo', 'number'));
 		return Loader::get_obj($url);
 	}
-	/**
-		* Gets the labels for the repo
-		* @param string $user - username
-		* @param string $repo - repository name
-		*/
-	public function labels($user, $repo) {
-		$url = Loader::prep_url(self::LABELS, compact('user', 'repo'));
-		return Loader::get_obj($url);
-	}
+
 	
 	
 }
