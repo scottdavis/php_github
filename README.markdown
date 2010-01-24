@@ -65,6 +65,19 @@ Commit
 
 	$return = GitHub\Commits::commit('plow', 'jetviper21', 'eb82a10506b5e6817b7d4ac2913b1d801fd52be9');
 
+###Issues
+Search
+
+	$return = GitHub\Issues::search('rails', 'rails', GitHub\Issues::CLOSED, 'record');
+
+Get All issues for repo
+
+	$return = GitHub\Issues::get('rails', 'rails', GitHub\Issues::CLOSED);
+
+View an issue
+
+	$return = GitHub\Issues::view('jetviper21', 'nimblize', '7');
+
 
 ##Dependencies
 
