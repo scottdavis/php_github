@@ -6,3 +6,8 @@ Php-GitHub is a library wrapping the github v2 api written to versions of php >=
 ##Usage
 	
 	$search = GitHub\Repos::search('php-github');
+	
+	
+##Dependencies
+
+**php-curl**
